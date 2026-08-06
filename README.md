@@ -179,7 +179,6 @@ npm run validate
 ```
 
 Consulte a [política de privacidade do MVP](docs/privacy.md), a [avaliação](docs/evaluation.md) e o [padrão de conteúdo](docs/content-standard.md) antes de criar novas atividades digitais.
-
 ---
 
 # 📚 Documentação

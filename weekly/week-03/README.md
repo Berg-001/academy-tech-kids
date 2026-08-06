@@ -9,7 +9,6 @@
 - Planejar um orçamento simples e justificar escolhas.
 - Diferenciar gratuito, pago e código aberto.
 - Refletir sobre dados pessoais como forma indireta de pagamento.
-
 ## Português
 
 Escreva um texto curto: **Comprar agora ou planejar primeiro?**

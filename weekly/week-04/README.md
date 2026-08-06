@@ -9,7 +9,6 @@
 - Escrever instruções claras e ordenadas.
 - Identificar dependências, paralelismo e decisões.
 - Representar um processo em um fluxograma simples.
-
 ## Português
 
 Escreva instruções claras para preparar um sanduíche. Depois revise o texto, procurando passos ambíguos.
