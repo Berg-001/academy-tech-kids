@@ -169,7 +169,14 @@ academy-tech-kids/
 
 ## Experiência web
 
-Abra `index.html` em um navegador moderno para usar a microaula e o teste da Semana 1. A página funciona sem cadastro, não envia respostas para um servidor e permite realizar o teste sem limite de tempo.
+Abra `index.html` em um navegador moderno para acessar o primeiro módulo interativo. Ele reúne quatro semanas, cada uma com microaula, prática e teste de 10 questões com explicações. A página funciona sem cadastro, não envia respostas para um servidor e permite realizar os testes sem limite de tempo.
+
+| Semana | Tema |
+|---:|---|
+| 1 | Tecnologia está em todo lugar |
+| 2 | Por dentro do computador |
+| 3 | Organização financeira e privacidade |
+| 4 | Algoritmos no cotidiano |
 
 Para executar as verificações locais, use Node.js 18 ou superior:
 

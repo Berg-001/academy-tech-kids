@@ -23,5 +23,14 @@
     return Math.min(100, Math.max(0, Math.round((completed / total) * 100)));
   }
 
-  return { formatTime, calculateScore, progressPercent };
+  function rotateQuestion(question, offset) {
+    const options = Array.isArray(question.options) ? question.options.slice() : [];
+    if (!options.length) return { ...question, options, correct: 0 };
+    const rotation = ((Math.floor(offset) % options.length) + options.length) % options.length;
+    const rotated = options.slice(rotation).concat(options.slice(0, rotation));
+    const correct = (question.correct - rotation + options.length) % options.length;
+    return { ...question, options: rotated, correct };
+  }
+
+  return { formatTime, calculateScore, progressPercent, rotateQuestion };
 }));
