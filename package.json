@@ -1,0 +1,13 @@
+{
+  "name": "academy-tech-kids",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Conteúdo educacional e experiência web estática do Academy Tech Kids",
+  "scripts": {
+    "test": "node --test",
+    "validate": "node scripts/validate-content.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

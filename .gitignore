@@ -1,0 +1,14 @@
+# Dados privados dos alunos
+private/
+student-data/
+progress-private/
+
+# Arquivos temporários
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/

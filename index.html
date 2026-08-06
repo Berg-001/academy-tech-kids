@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="description" content="Microaula e teste da Semana 1 do Academy Tech Kids.">
+  <title>Semana 1 | Academy Tech Kids</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Academy Tech Kids — início">
+      <span aria-hidden="true">🚀</span> Academy Tech Kids
+    </a>
+    <button id="contrast-toggle" class="quiet-button" type="button" aria-pressed="false">Alto contraste</button>
+  </header>
+
+  <main id="conteudo">
+    <section id="inicio" class="hero" aria-labelledby="titulo">
+      <div>
+        <p class="eyebrow">Semana 1 · 12 a 14 anos · cerca de 25 minutos</p>
+        <h1 id="titulo">Tecnologia está em todo lugar</h1>
+        <p>Aprenda a reconhecer tecnologias do cotidiano e termine com um desafio rápido. Você pode fazer tudo sem cronômetro.</p>
+        <a class="primary-button" href="#microaula">Começar a aula</a>
+      </div>
+      <div class="hero-visual" role="img" aria-label="Ilustração de um computador conectado a objetos do cotidiano">
+        <span>💻</span><span>📱</span><span>🚦</span><span>🎮</span><span>🏥</span>
+      </div>
+    </section>
+
+    <section id="microaula" class="panel lesson" aria-labelledby="aula-titulo">
+      <p class="eyebrow">Microaula 1</p>
+      <h2 id="aula-titulo">O que é tecnologia?</h2>
+      <div class="lesson-grid">
+        <div class="lesson-stage" aria-labelledby="stage-title" tabindex="0">
+          <p id="stage-title" class="stage-title">Observe ao seu redor</p>
+          <div class="orbit" aria-hidden="true"><span>⚙️</span><span>💡</span><span>🚌</span></div>
+          <p>Tecnologia é conhecimento aplicado para resolver problemas. Ela pode ser digital, mecânica ou muito simples.</p>
+        </div>
+        <div>
+          <h3>Três ideias importantes</h3>
+          <ol class="concept-list">
+            <li><strong>Não é só computador.</strong> Uma ponte, uma vacina e um semáforo também usam tecnologia.</li>
+            <li><strong>Existe uma necessidade.</strong> Pessoas criam ferramentas para comunicar, transportar, cuidar ou construir.</li>
+            <li><strong>Podemos avaliar.</strong> Uma solução pode ter benefícios, limites e impactos nas pessoas.</li>
+          </ol>
+        </div>
+      </div>
+      <details>
+        <summary>Transcrição da microaula</summary>
+        <p>Quando ouvimos a palavra tecnologia, podemos pensar em celulares e computadores. Mas tecnologia é toda aplicação de conhecimento criada para resolver um problema. O semáforo organiza o trânsito, uma geladeira conserva alimentos e um lápis ajuda a registrar ideias. Ao analisar uma tecnologia, pergunte: qual problema ela resolve, quem ela ajuda e quais cuidados exige?</p>
+      </details>
+    </section>
+
+    <section class="panel reflection" aria-labelledby="pratica-titulo">
+      <div>
+        <p class="eyebrow">Prática sem nota</p>
+        <h2 id="pratica-titulo">Investigador do cotidiano</h2>
+        <p>Olhe ao redor e escolha um objeto. Explique oralmente qual problema ele resolve e um cuidado necessário ao utilizá-lo.</p>
+      </div>
+      <div class="prompt-card" aria-label="Perguntas de apoio">
+        <strong>Pistas</strong>
+        <span>O que é?</span>
+        <span>Para que serve?</span>
+        <span>Quem se beneficia?</span>
+        <span>Que cuidado exige?</span>
+      </div>
+    </section>
+
+    <section id="teste" class="panel quiz" aria-labelledby="quiz-title">
+      <div id="quiz-intro">
+        <p class="eyebrow">Desafio de revisão · 5 questões</p>
+        <h2 id="quiz-title">Mostre o que descobriu</h2>
+        <p>As respostas ficam somente neste navegador. O tempo não altera a pontuação.</p>
+
+        <fieldset class="timer-options">
+          <legend>Escolha como fazer</legend>
+          <label><input type="radio" name="duration" value="0" checked> Sem limite de tempo</label>
+          <label><input type="radio" name="duration" value="300"> 5 minutos</label>
+          <label><input type="radio" name="duration" value="600"> 10 minutos</label>
+        </fieldset>
+        <button id="start-quiz" class="primary-button" type="button">Iniciar desafio</button>
+      </div>
+
+      <div id="quiz-active" hidden>
+        <div class="quiz-status">
+          <p id="progress-text">Questão 1 de 5</p>
+          <progress id="progress-bar" class="progress-track" aria-label="Progresso do teste" max="5" value="0">0 de 5</progress>
+          <div class="timer-box">
+            <span id="timer" role="timer" aria-live="off">Sem limite</span>
+            <button id="pause-timer" class="quiet-button" type="button" hidden>Pausar</button>
+          </div>
+        </div>
+        <form id="quiz-form">
+          <fieldset id="question-fieldset">
+            <legend id="question-text"></legend>
+            <div id="answer-options" class="answer-options"></div>
+          </fieldset>
+          <p id="answer-error" class="error" role="alert" hidden>Escolha uma resposta para continuar.</p>
+          <button class="primary-button" type="submit">Responder</button>
+        </form>
+        <div id="feedback" class="feedback" tabindex="-1" hidden>
+          <h3 id="feedback-title"></h3>
+          <p id="feedback-text"></p>
+          <button id="next-question" class="primary-button" type="button">Próxima questão</button>
+        </div>
+      </div>
+
+      <div id="quiz-result" class="result" aria-live="polite" tabindex="-1" hidden>
+        <p class="eyebrow">Desafio concluído</p>
+        <h2 id="result-title"></h2>
+        <p id="result-message"></p>
+        <p id="result-time"></p>
+        <div class="result-actions">
+          <button id="retry-quiz" class="primary-button" type="button">Tentar novamente</button>
+          <button id="clear-data" class="quiet-button" type="button">Apagar dados deste dispositivo</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-note" aria-labelledby="privacidade-titulo">
+      <h2 id="privacidade-titulo">Sua privacidade importa</h2>
+      <p>Este site não pede nome, e-mail ou escola e não envia respostas para a internet. Consulte a <a href="docs/privacy.md">política de privacidade</a>.</p>
+    </section>
+  </main>
+
+  <footer><p>Academy Tech Kids · Aprender, praticar, criar, explicar e revisar.</p></footer>
+  <script src="assets/quiz-core.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
