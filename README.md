@@ -171,7 +171,7 @@ academy-tech-kids/
 
 Abra `index.html` em um navegador moderno para acessar o primeiro módulo interativo. Ele reúne quatro semanas, cada uma com microaula, prática e teste de 10 questões com explicações. A página funciona sem cadastro, não envia respostas para um servidor e permite realizar os testes sem limite de tempo.
 
-O painel local do mentor mantém até 20 tentativas por semana, apresenta indicadores de aproveitamento e permite exportar respostas em JSON ou CSV. Os registros permanecem somente no navegador até serem exportados e não contêm identificação pessoal.
+O painel local do mentor mantém até 20 tentativas por semana, apresenta indicadores de aproveitamento e permite exportar respostas em JSON ou CSV. Os registros permanecem somente no navegador até serem exportados e não contêm identificação pessoal. O painel fica oculto no modo aluno e pode ser aberto acrescentando `?modo=mentor` ao endereço do site.
 
 | Semana | Tema |
 |---:|---|

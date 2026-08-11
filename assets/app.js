@@ -6,6 +6,7 @@
   const historyKey = "atk-attempt-history-v1";
   const preferenceKey = "atk-preferences-v1";
   const maxAttemptsPerWeek = 20;
+  const mentorMode = new URLSearchParams(location.search).get("modo") === "mentor";
   const state = {
     weekIndex: 0,
     questionIndex: 0,
@@ -402,6 +403,7 @@
     byId("contrast-toggle").setAttribute("aria-pressed", "true");
   }
   const hashIndex = weeks.findIndex((week) => `#${week.id}` === location.hash);
+  if (mentorMode) byId("mentor-panel").hidden = false;
   selectWeek(hashIndex >= 0 ? hashIndex : 0, false);
   renderInsights();
 }());

@@ -17,6 +17,8 @@ Esses dados permanecem no dispositivo. O histórico é limitado às 20 tentativa
 
 ## Exportação pelo mentor
 
+O painel não aparece no modo aluno. O mentor pode acessá-lo acrescentando `?modo=mentor` ao endereço, no mesmo navegador em que as atividades foram realizadas. Esse endereço separa a interface, mas não funciona como autenticação de segurança.
+
 O painel permite baixar o histórico local nos formatos JSON e CSV. Os arquivos não incluem nome, e-mail, escola ou identificador do aluno. Depois de exportados, sua guarda, acesso e exclusão ficam sob responsabilidade do mentor. Recomenda-se:
 
 - manter o arquivo em dispositivo protegido;

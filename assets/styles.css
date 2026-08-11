@@ -63,6 +63,7 @@ caption { padding: 0 0 .75rem; text-align: left; font-weight: 800; }
 th, td { padding: .8rem; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
 th { color: var(--muted); font-size: .8rem; text-transform: uppercase; }
 .retention-note { color: var(--muted); font-size: .85rem; }
+.mentor-mode-note { margin: 1.5rem 0 0; padding-top: 1rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
 .week-content { scroll-margin-top: 1rem; }
 .panel { margin: 2rem 0; padding: clamp(1.5rem, 5vw, 4rem); background: var(--surface); border: 1px solid var(--border); border-radius: 1.5rem; box-shadow: var(--shadow); }
 .panel h2 { margin: .25rem 0 1.5rem; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.1; }
