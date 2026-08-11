@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { formatTime, calculateScore, progressPercent, rotateQuestion } = require("../assets/quiz-core.js");
+const { formatTime, calculateScore, progressPercent, rotateQuestion, summarizeAttempts, csvEscape } = require("../assets/quiz-core.js");
 
 test("formata duração sem valores negativos", () => {
   assert.equal(formatTime(65), "01:05");
@@ -39,4 +39,21 @@ test("cada semana possui dez questões válidas", () => {
       assert.ok(explanation.length > 10);
     }
   }
+});
+
+test("resume tentativas e calcula evolução", () => {
+  const summary = summarizeAttempts([
+    { score: 5, total: 10 },
+    { score: 7, total: 10 },
+    { score: 9, total: 10 }
+  ]);
+  assert.deepEqual(summary, { attempts: 3, average: 70, best: 90, latest: 90, evolution: 40 });
+  assert.deepEqual(summarizeAttempts([]), { attempts: 0, average: 0, best: 0, latest: 0, evolution: 0 });
+});
+
+test("protege valores especiais na exportação CSV", () => {
+  assert.equal(csvEscape("texto simples"), "texto simples");
+  assert.equal(csvEscape('resposta; com "aspas"'), '"resposta; com ""aspas"""');
+  assert.equal(csvEscape("=1+1"), "'=1+1");
+  assert.equal(csvEscape(null), "");
 });

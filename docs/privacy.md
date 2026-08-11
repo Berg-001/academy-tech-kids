@@ -9,10 +9,22 @@ O site estático não possui cadastro, anúncios, análise de tráfego, cookies 
 O navegador pode guardar localmente:
 
 - preferências de tempo e acessibilidade;
-- respostas e resultado da tentativa;
-- data da última atividade.
+- respostas marcadas e gabarito de cada questão;
+- pontuação, duração e modo de cronômetro de cada tentativa;
+- data e semana da atividade.
 
-Esses dados permanecem no dispositivo e podem ser removidos pelo botão **Apagar dados deste dispositivo** ou pela limpeza dos dados do navegador.
+Esses dados permanecem no dispositivo. O histórico é limitado às 20 tentativas mais recentes de cada semana e pode ser removido pelos botões **Apagar progresso** ou **Apagar histórico**, ou pela limpeza dos dados do navegador.
+
+## Exportação pelo mentor
+
+O painel permite baixar o histórico local nos formatos JSON e CSV. Os arquivos não incluem nome, e-mail, escola ou identificador do aluno. Depois de exportados, sua guarda, acesso e exclusão ficam sob responsabilidade do mentor. Recomenda-se:
+
+- manter o arquivo em dispositivo protegido;
+- não adicionar o nome completo da criança ao nome do arquivo;
+- compartilhar somente com o responsável e pessoas autorizadas;
+- apagar a exportação quando ela deixar de ser necessária.
+
+Os indicadores são formativos e não devem ser usados isoladamente para retirar recompensas, comparar crianças ou tomar decisões de alto impacto.
 
 ## Dados proibidos
 

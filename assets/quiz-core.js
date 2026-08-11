@@ -32,5 +32,29 @@
     return { ...question, options: rotated, correct };
   }
 
-  return { formatTime, calculateScore, progressPercent, rotateQuestion };
+  function summarizeAttempts(attempts) {
+    if (!Array.isArray(attempts) || attempts.length === 0) {
+      return { attempts: 0, average: 0, best: 0, latest: 0, evolution: 0 };
+    }
+    const percentages = attempts.map((attempt) => {
+      const total = Number(attempt.total);
+      return total > 0 ? Math.round((Number(attempt.score) / total) * 100) : 0;
+    });
+    const average = Math.round(percentages.reduce((sum, value) => sum + value, 0) / percentages.length);
+    return {
+      attempts: attempts.length,
+      average,
+      best: Math.max(...percentages),
+      latest: percentages[percentages.length - 1],
+      evolution: percentages.length > 1 ? percentages[percentages.length - 1] - percentages[0] : 0
+    };
+  }
+
+  function csvEscape(value) {
+    let text = value == null ? "" : String(value);
+    if (/^[=+\-@]/.test(text)) text = `'${text}`;
+    return /[";,\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+  }
+
+  return { formatTime, calculateScore, progressPercent, rotateQuestion, summarizeAttempts, csvEscape };
 }));

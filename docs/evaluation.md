@@ -25,6 +25,17 @@ O nível esperado depende da atividade. Um nível não deve virar rótulo perman
 - Registrar separadamente acertos, esforço, revisão e evolução.
 - Não aplicar penalidade por adaptação de tempo.
 
+## Indicadores internos
+
+O painel local apresenta, por semana:
+
+- **aproveitamento:** acertos divididos pelo total de questões;
+- **média:** média dos percentuais de todas as tentativas retidas;
+- **melhor resultado:** maior percentual alcançado;
+- **evolução:** diferença, em pontos percentuais, entre a primeira e a tentativa mais recente.
+
+Esses números ajudam a escolher o próximo conteúdo, mas não substituem observação, conversa, produção prática e contexto do aluno. Tempo de resposta não acrescenta nem remove pontos.
+
 ## Recuperação
 
 Uma resposta incorreta deve levar a uma explicação, nova atividade equivalente e oportunidade de demonstrar aprendizagem. O registro deve destacar a evolução mais recente.

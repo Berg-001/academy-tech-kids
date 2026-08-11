@@ -3,7 +3,9 @@
 
   const weeks = globalThis.AcademyWeeks || [];
   const progressKey = "atk-learning-progress-v2";
+  const historyKey = "atk-attempt-history-v1";
   const preferenceKey = "atk-preferences-v1";
+  const maxAttemptsPerWeek = 20;
   const state = {
     weekIndex: 0,
     questionIndex: 0,
@@ -32,6 +34,98 @@
 
   function getProgress() {
     return readStorage(progressKey, {});
+  }
+
+  function getHistory() {
+    return readStorage(historyKey, {});
+  }
+
+  function allAttempts() {
+    const history = getHistory();
+    return weeks.flatMap((week) => Array.isArray(history[week.id]) ? history[week.id] : []);
+  }
+
+  function saveAttempt(attempt) {
+    const history = getHistory();
+    const attempts = Array.isArray(history[attempt.weekId]) ? history[attempt.weekId] : [];
+    history[attempt.weekId] = attempts.concat(attempt).slice(-maxAttemptsPerWeek);
+    writeStorage(historyKey, history);
+  }
+
+  function percentage(attempt) {
+    return attempt.total > 0 ? Math.round((attempt.score / attempt.total) * 100) : 0;
+  }
+
+  function renderInsights() {
+    const history = getHistory();
+    const attempts = allAttempts();
+    const hasAttempts = attempts.length > 0;
+    byId("insights-empty").hidden = hasAttempts;
+    byId("insights-content").hidden = !hasAttempts;
+    byId("export-json").disabled = !hasAttempts;
+    byId("export-csv").disabled = !hasAttempts;
+    byId("clear-history").disabled = !hasAttempts;
+    if (!hasAttempts) return;
+
+    const overall = QuizCore.summarizeAttempts(attempts);
+    const completedWeeks = weeks.filter((week) => Array.isArray(history[week.id]) && history[week.id].length).length;
+    byId("metric-attempts").textContent = String(overall.attempts);
+    byId("metric-average").textContent = `${overall.average}%`;
+    byId("metric-best").textContent = `${overall.best}%`;
+    byId("metric-weeks").textContent = `${completedWeeks}/${weeks.length}`;
+
+    const table = byId("insights-table");
+    table.replaceChildren();
+    weeks.forEach((week) => {
+      const weekAttempts = Array.isArray(history[week.id]) ? history[week.id] : [];
+      const summary = QuizCore.summarizeAttempts(weekAttempts);
+      const row = document.createElement("tr");
+      const values = weekAttempts.length
+        ? [`Semana ${week.number}`, summary.attempts, `${summary.average}%`, `${summary.best}%`, `${summary.latest}%`, `${summary.evolution >= 0 ? "+" : ""}${summary.evolution} p.p.`]
+        : [`Semana ${week.number}`, 0, "—", "—", "—", "—"];
+      values.forEach((value) => {
+        const cell = document.createElement("td");
+        cell.textContent = String(value);
+        row.append(cell);
+      });
+      table.append(row);
+    });
+  }
+
+  function downloadFile(filename, content, type) {
+    const blob = new Blob([content], { type });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function exportJson() {
+    const payload = {
+      schemaVersion: 1,
+      exportedAt: new Date().toISOString(),
+      privacy: "Sem nome ou identificador pessoal; dados originados somente deste navegador.",
+      attemptsByWeek: getHistory()
+    };
+    downloadFile("academy-tech-kids-tentativas.json", JSON.stringify(payload, null, 2), "application/json;charset=utf-8");
+  }
+
+  function exportCsv() {
+    const headers = ["tentativa_id", "semana", "data", "acertos", "total", "aproveitamento_percentual", "tempo_segundos", "cronometro", "limite_segundos", "questao", "enunciado", "resposta_marcada", "resposta_correta", "acertou"];
+    const rows = [headers];
+    allAttempts().forEach((attempt) => {
+      attempt.responses.forEach((response) => rows.push([
+        attempt.id, attempt.weekNumber, attempt.completedAt, attempt.score, attempt.total, percentage(attempt), attempt.elapsedSeconds,
+        attempt.timed ? "sim" : "não", attempt.timeLimitSeconds || "", response.questionNumber, response.question,
+        response.selectedAnswer || "não respondida", response.correctAnswer, response.correct ? "sim" : "não"
+      ]));
+    });
+    const csv = rows.map((row) => row.map(QuizCore.csvEscape).join(";")).join("\r\n");
+    downloadFile("academy-tech-kids-tentativas.csv", `\uFEFF${csv}`, "text/csv;charset=utf-8");
   }
 
   function currentWeek() {
@@ -134,10 +228,35 @@
     const questions = normalizedQuestions();
     const score = QuizCore.calculateScore(state.answers, questions);
     const week = currentWeek();
+    const responses = questions.map((question, index) => {
+      const selected = state.answers[index];
+      return {
+        questionNumber: index + 1,
+        question: question.text,
+        selectedAnswer: Number.isInteger(selected) ? question.options[selected] : null,
+        correctAnswer: question.options[question.correct],
+        correct: selected === question.correct
+      };
+    });
+    const completedAt = new Date().toISOString();
+    saveAttempt({
+      id: `${Date.now()}-${week.id}`,
+      weekId: week.id,
+      weekNumber: week.number,
+      weekTitle: week.title,
+      completedAt,
+      score,
+      total: questions.length,
+      elapsedSeconds: state.elapsed,
+      timed: state.duration > 0,
+      timeLimitSeconds: state.duration || null,
+      finishReason: reason,
+      responses
+    });
     const progress = getProgress();
     const previous = progress[week.id];
     if (!previous || score >= previous.score) {
-      progress[week.id] = { score, total: questions.length, completedAt: new Date().toISOString() };
+      progress[week.id] = { score, total: questions.length, completedAt };
       writeStorage(progressKey, progress);
     }
     byId("quiz-active").hidden = true;
@@ -152,6 +271,7 @@
           : "Você deu um passo importante. Reveja a microaula e faça uma nova tentativa sem pressa.";
     byId("result-time").textContent = `Tempo de atividade: ${QuizCore.formatTime(state.elapsed)}.`;
     renderWeekNavigation();
+    renderInsights();
     byId("quiz-result").focus();
   }
 
@@ -250,9 +370,26 @@
   });
 
   byId("clear-data").addEventListener("click", function () {
-    try { localStorage.removeItem(progressKey); } catch (_) { /* Storage may be disabled. */ }
+    try {
+      localStorage.removeItem(progressKey);
+      localStorage.removeItem(historyKey);
+    } catch (_) { /* Storage may be disabled. */ }
     byId("result-message").textContent = "O progresso das atividades foi apagado deste navegador.";
     renderWeekNavigation();
+    renderInsights();
+  });
+
+  byId("export-json").addEventListener("click", exportJson);
+  byId("export-csv").addEventListener("click", exportCsv);
+  byId("clear-history").addEventListener("click", function () {
+    const confirmed = window.confirm("Apagar permanentemente todas as tentativas e pontuações deste navegador?");
+    if (!confirmed) return;
+    try {
+      localStorage.removeItem(historyKey);
+      localStorage.removeItem(progressKey);
+    } catch (_) { /* Storage may be disabled. */ }
+    renderWeekNavigation();
+    renderInsights();
   });
 
   byId("start-quiz").addEventListener("click", startQuiz);
@@ -266,4 +403,5 @@
   }
   const hashIndex = weeks.findIndex((week) => `#${week.id}` === location.hash);
   selectWeek(hashIndex >= 0 ? hashIndex : 0, false);
+  renderInsights();
 }());

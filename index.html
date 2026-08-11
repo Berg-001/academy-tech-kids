@@ -36,6 +36,38 @@
       <p class="storage-message">O progresso é salvo somente neste navegador.</p>
     </section>
 
+    <section class="panel insights" aria-labelledby="insights-title">
+      <div class="insights-heading">
+        <div>
+          <p class="eyebrow">Painel local do mentor</p>
+          <h2 id="insights-title">Aproveitamento das tentativas</h2>
+          <p>Os dados abaixo existem apenas neste dispositivo e não identificam o aluno.</p>
+        </div>
+        <div class="insights-actions">
+          <button id="export-json" class="quiet-button" type="button">Exportar JSON</button>
+          <button id="export-csv" class="quiet-button" type="button">Exportar CSV</button>
+          <button id="clear-history" class="danger-button" type="button">Apagar histórico</button>
+        </div>
+      </div>
+      <div id="insights-empty" class="empty-state">Conclua um teste para gerar os primeiros indicadores.</div>
+      <div id="insights-content" hidden>
+        <div class="metric-grid">
+          <div class="metric"><span>Tentativas</span><strong id="metric-attempts">0</strong></div>
+          <div class="metric"><span>Média geral</span><strong id="metric-average">0%</strong></div>
+          <div class="metric"><span>Melhor resultado</span><strong id="metric-best">0%</strong></div>
+          <div class="metric"><span>Semanas concluídas</span><strong id="metric-weeks">0/4</strong></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Resumo por semana</caption>
+            <thead><tr><th>Semana</th><th>Tentativas</th><th>Média</th><th>Melhor</th><th>Última</th><th>Evolução</th></tr></thead>
+            <tbody id="insights-table"></tbody>
+          </table>
+        </div>
+        <p class="retention-note">São mantidas no máximo 20 tentativas por semana. Exporte os dados antes de apagá-los ou trocar de dispositivo.</p>
+      </div>
+    </section>
+
     <article id="week-content" class="week-content" aria-live="polite">
       <section class="week-heading panel">
         <div>
