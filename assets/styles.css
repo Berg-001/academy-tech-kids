@@ -108,6 +108,7 @@ input[type="radio"] { width: 1.25rem; height: 1.25rem; flex: 0 0 auto; margin-to
 .result-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 .safety-note { margin: 3rem auto; max-width: 760px; text-align: center; }
 footer { padding: 2rem; text-align: center; color: var(--muted); }
+.visit-counter { margin: .35rem 0 0; font-size: .72rem; opacity: .72; }
 
 .high-contrast { --ink: #000; --muted: #111; --surface: #fff; --soft: #fff; --primary: #001b8f; --primary-dark: #000; --accent: #ffcc00; --border: #000; background: #fff; }
 .high-contrast .reflection { background: #000; }

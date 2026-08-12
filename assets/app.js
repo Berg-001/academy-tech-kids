@@ -5,6 +5,7 @@
   const progressKey = "atk-learning-progress-v2";
   const historyKey = "atk-attempt-history-v1";
   const preferenceKey = "atk-preferences-v1";
+  const visitKey = "atk-local-visits-v1";
   const maxAttemptsPerWeek = 20;
   const mentorMode = new URLSearchParams(location.search).get("modo") === "mentor";
   const state = {
@@ -19,6 +20,16 @@
     finished: false
   };
   const byId = (id) => document.getElementById(id);
+
+  function registerLocalVisit() {
+    let visits = 1;
+    try {
+      const stored = Number(localStorage.getItem(visitKey));
+      visits = Number.isSafeInteger(stored) && stored >= 0 ? stored + 1 : 1;
+      localStorage.setItem(visitKey, String(visits));
+    } catch (_) { /* Storage may be disabled. */ }
+    byId("visit-count").textContent = visits.toLocaleString("pt-BR");
+  }
 
   function readStorage(key, fallback) {
     try {
@@ -398,6 +409,7 @@
   byId("next-week").addEventListener("click", () => selectWeek(state.weekIndex + 1, true));
 
   const preferences = readStorage(preferenceKey, {});
+  registerLocalVisit();
   if (preferences.highContrast) {
     document.body.classList.add("high-contrast");
     byId("contrast-toggle").setAttribute("aria-pressed", "true");

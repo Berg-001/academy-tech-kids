@@ -173,6 +173,8 @@ Abra `index.html` em um navegador moderno para acessar o primeiro módulo intera
 
 O painel local do mentor mantém até 20 tentativas por semana, apresenta indicadores de aproveitamento e permite exportar respostas em JSON ou CSV. Os registros permanecem somente no navegador até serem exportados e não contêm identificação pessoal. O painel fica oculto no modo aluno e pode ser aberto acrescentando `?modo=mentor` ao endereço do site.
 
+O rodapé exibe discretamente a quantidade de acessos realizados apenas naquele navegador. Esse contador não representa visitas globais e não envia dados para serviços externos.
+
 | Semana | Tema |
 |---:|---|
 | 1 | Tecnologia está em todo lugar |

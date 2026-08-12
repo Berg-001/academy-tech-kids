@@ -12,6 +12,7 @@ O navegador pode guardar localmente:
 - respostas marcadas e gabarito de cada questão;
 - pontuação, duração e modo de cronômetro de cada tentativa;
 - data e semana da atividade.
+- quantidade de acessos realizados naquele navegador.
 
 Esses dados permanecem no dispositivo. O histórico é limitado às 20 tentativas mais recentes de cada semana e pode ser removido pelos botões **Apagar progresso** ou **Apagar histórico**, ou pela limpeza dos dados do navegador.
 
