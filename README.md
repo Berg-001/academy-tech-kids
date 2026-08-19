@@ -169,7 +169,7 @@ academy-tech-kids/
 
 ## Experiência web
 
-Abra `index.html` em um navegador moderno para acessar o primeiro módulo interativo. Ele reúne quatro semanas, cada uma com microaula, prática e teste de 10 questões com explicações. A página funciona sem cadastro, não envia respostas para um servidor e permite realizar os testes sem limite de tempo.
+Abra `index.html` em um navegador moderno para acessar o primeiro módulo interativo. Ele reúne seis semanas, cada uma com microaula, prática e teste de 10 questões com explicações. A página funciona sem cadastro, não envia respostas para um servidor e permite realizar os testes sem limite de tempo.
 
 O painel local do mentor mantém até 20 tentativas por semana, apresenta indicadores de aproveitamento e permite exportar respostas em JSON ou CSV. Os registros permanecem somente no navegador até serem exportados e não contêm identificação pessoal. O painel fica oculto no modo aluno e pode ser aberto acrescentando `?modo=mentor` ao endereço do site.
 
@@ -181,6 +181,8 @@ O rodapé exibe discretamente a quantidade de acessos realizados apenas naquele 
 | 2 | Por dentro do computador |
 | 3 | Organização financeira e privacidade |
 | 4 | Algoritmos no cotidiano |
+| 5 | Decomposição e padrões |
+| 6 | Primeiros passos na programação |
 
 Para executar as verificações locais, use Node.js 18 ou superior:
 

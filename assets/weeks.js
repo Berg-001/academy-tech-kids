@@ -121,6 +121,66 @@
         ["Testar um algoritmo significa...", ["seguir os passos e observar o resultado", "apenas ler o título", "decorar sem compreender"], 0, "A execução permite encontrar erros e oportunidades de melhoria."],
         ["Qual sequência faz sentido ao preparar um sanduíche?", ["Separar ingredientes, montar e servir", "Servir, comprar e começar", "Terminar antes de iniciar"], 0, "A sequência respeita as dependências naturais da tarefa." ]
       ]
+    },
+    {
+      id: "week-05",
+      number: 5,
+      title: "Decomposição e padrões",
+      theme: "Problemas menores e soluções reutilizáveis",
+      duration: "30 minutos",
+      emoji: "🧩",
+      summary: "Divida problemas complexos em partes menores e reconheça padrões que ajudam a resolvê-los.",
+      objective: "Decompor um problema, organizar suas partes e identificar padrões e dependências.",
+      concepts: [
+        ["Decomposição", "Um problema grande fica mais fácil quando é dividido em partes menores."],
+        ["Padrões", "Semelhanças e repetições permitem reaproveitar estratégias."],
+        ["Dependências", "Algumas tarefas só podem começar depois que outra parte estiver pronta."]
+      ],
+      practice: "Organize uma festa fictícia em quatro grupos: convidados, espaço, alimentação e atividades. Inclua duas tarefas por grupo e marque as dependências.",
+      prompts: ["Quais são as partes?", "O que se repete?", "O que depende de quê?", "Faltou alguma tarefa?"],
+      transcript: "Decompor significa dividir um problema grande em partes menores. Depois observamos padrões, isto é, elementos que se repetem ou funcionam de maneira parecida. Também identificamos dependências: para calcular a quantidade de mesas, por exemplo, primeiro precisamos saber o número de convidados. Essas estratégias ajudam a organizar ideias, testar cada parte e reutilizar soluções.",
+      questions: [
+        ["O que significa decompor um problema?", ["Dividi-lo em partes menores", "Ignorar as partes difíceis", "Repetir a pergunta"], 0, "Partes menores tornam o problema mais fácil de compreender e resolver."],
+        ["O que é um padrão?", ["Uma repetição ou semelhança", "Um dado pessoal", "Uma tarefa esquecida"], 0, "Padrões revelam estruturas que podem ser reaproveitadas."],
+        ["Qual exemplo mostra uma dependência?", ["Calcular mesas após saber o número de convidados", "Escolher duas cores independentes", "Escrever tarefas sem ordem"], 0, "A quantidade de convidados é necessária para calcular as mesas."],
+        ["Doze convidados em mesas de quatro precisam de...", ["2 mesas", "3 mesas", "4 mesas"], 1, "12 dividido por 4 é igual a 3."],
+        ["Se uma jarra serve 6 copos, 24 copos exigem...", ["2 jarras", "3 jarras", "4 jarras"], 2, "24 dividido por 6 é igual a 4."],
+        ["Qual é uma vantagem da decomposição?", ["Testar cada parte separadamente", "Eliminar a necessidade de pensar", "Garantir uma única solução"], 0, "Partes menores podem ser analisadas e testadas com mais clareza."],
+        ["Duas decomposições diferentes podem funcionar?", ["Sim, se cobrirem o problema de modo coerente", "Nunca", "Somente se tiverem nomes iguais"], 0, "Um problema pode ser organizado de maneiras diferentes e válidas."],
+        ["Ao encontrar tarefas semelhantes, podemos...", ["Criar uma estratégia reutilizável", "Apagar todas", "Compartilhar dados pessoais"], 0, "Reconhecer o padrão evita refazer a solução do zero."],
+        ["Depois de dividir um problema, é importante...", ["Verificar se nenhuma parte essencial faltou", "Ignorar dependências", "Mudar o objetivo"], 0, "A revisão confirma que a decomposição cobre o problema."],
+        ["Qual informação deve ser fictícia na atividade?", ["O endereço da festa", "A operação de divisão", "O nome das categorias"], 0, "Não devemos usar endereços reais em uma atividade pública."]
+      ]
+    },
+    {
+      id: "week-06",
+      number: 6,
+      title: "Primeiros passos na programação",
+      theme: "Variáveis, condições e pseudocódigo",
+      duration: "30 minutos",
+      emoji: "⌨️",
+      summary: "Transforme um algoritmo em pseudocódigo usando entrada, variáveis, cálculos, condições e saída.",
+      objective: "Ler e simular um programa simples, identificando entrada, processamento, condição e saída.",
+      concepts: [
+        ["Variável", "Um nome que representa um valor que pode ser consultado ou alterado."],
+        ["Entrada e saída", "A entrada fornece dados; a saída apresenta o resultado processado."],
+        ["Condição", "Uma pergunta verdadeira ou falsa decide quais instruções serão executadas."]
+      ],
+      practice: "Simule no papel um programa que concede 10 pontos por missão e 5 pontos extras a partir de 3 missões. Teste com 2, 3 e 5 missões.",
+      prompts: ["Qual é a entrada?", "Que valor muda?", "A condição é verdadeira?", "Qual é a saída?"],
+      transcript: "Programar é escrever instruções em uma forma que possa ser executada. Antes de usar uma linguagem, podemos planejar com pseudocódigo. Uma entrada fornece dados, variáveis guardam valores, o processamento realiza operações e a saída mostra o resultado. Uma condição escolhe um caminho conforme uma afirmação seja verdadeira ou falsa. Testar valores diferentes ajuda a encontrar erros.",
+      questions: [
+        ["Para que serve uma variável?", ["Representar um valor", "Ligar o computador", "Esconder instruções"], 0, "Uma variável associa um nome a um valor que pode ser usado ou atualizado."],
+        ["Em um programa, a entrada é...", ["o dado fornecido para processamento", "sempre o resultado final", "um tipo de monitor"], 0, "O programa recebe a entrada antes de processá-la."],
+        ["O que é a saída?", ["O resultado apresentado", "A pergunta da condição", "Uma senha"], 0, "A saída comunica o resultado produzido pelo programa."],
+        ["Uma condição é avaliada como...", ["verdadeira ou falsa", "cara ou barata", "grande ou azul"], 0, "Condições lógicas têm resultado verdadeiro ou falso."],
+        ["Com 2 missões a 10 pontos, sem bônus, o total é...", ["15", "20", "25"], 1, "2 vezes 10 resulta em 20 pontos."],
+        ["Com 3 missões e bônus de 5 pontos, o total é...", ["30", "35", "40"], 1, "3 vezes 10, mais 5, resulta em 35 pontos."],
+        ["No teste 'missões maior ou igual a 3', qual valor torna a condição verdadeira?", ["2", "1", "3"], 2, "O próprio limite 3 já satisfaz a expressão maior ou igual."],
+        ["Por que testar o programa com vários valores?", ["Para observar caminhos e encontrar erros", "Para mudar o objetivo", "Para evitar compreender o código"], 0, "Testes diferentes exercitam condições e resultados diferentes."],
+        ["Como tratar um número negativo de missões?", ["Rejeitar a entrada e pedir um valor válido", "Conceder pontos negativos sem aviso", "Publicar o valor"], 0, "A validação impede que um dado impossível siga para o cálculo."],
+        ["O pseudocódigo precisa ser executado por um computador?", ["Não, ele pode servir como planejamento", "Sim, sempre", "Somente com internet"], 0, "Pseudocódigo descreve a lógica e pode ser simulado no papel."]
+      ]
     }
   ];
 }(typeof globalThis !== "undefined" ? globalThis : this));

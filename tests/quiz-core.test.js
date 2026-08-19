@@ -29,7 +29,7 @@ test("rotaciona alternativas preservando a resposta correta", () => {
 
 test("cada semana possui dez questões válidas", () => {
   require("../assets/weeks.js");
-  assert.equal(global.AcademyWeeks.length, 4);
+  assert.equal(global.AcademyWeeks.length, 6);
   for (const week of global.AcademyWeeks) {
     assert.equal(week.questions.length, 10, `Semana ${week.number}`);
     for (const [text, options, correct, explanation] of week.questions) {
